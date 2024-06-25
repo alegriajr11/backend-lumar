@@ -1,5 +1,6 @@
 import { RolEntity } from "src/rol/rol.entity";
-import { BeforeInsert, Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { SeguimientoPedidoEntity } from "src/seguimiento_pedido/seguimiento_pedido.entity";
+import { BeforeInsert, Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm";
 
 @Entity({ name: 'usuario' })
 export class UsuarioEntity {
@@ -44,6 +45,10 @@ export class UsuarioEntity {
         inverseJoinColumn: { name: 'rol_id' }
     })
     roles: RolEntity[];
+
+    // Relacion Uno a Muchos USUARIO - SEGUIMIENTO_PEDIDO
+    @OneToMany(type => SeguimientoPedidoEntity, seguimiento_pedido => seguimiento_pedido.usuario)
+    seguimiento_pedido: SeguimientoPedidoEntity[];
 
     // @BeforeInsert()
     // async hashPassword() {

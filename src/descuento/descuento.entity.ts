@@ -15,5 +15,5 @@ export class DescuentoEntity {
     
     // Relacion Muchos a Uno DESCUENTO - PROMOCIÓN 
     @ManyToOne(type => PromocionEntity, promocion => promocion.descuento)
-    usuarios: PromocionEntity[];
+    promocion: PromocionEntity;
 }

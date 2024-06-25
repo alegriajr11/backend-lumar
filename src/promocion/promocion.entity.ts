@@ -19,6 +19,6 @@ export class PromocionEntity {
 
     
     // Relacion Uno a Muchos PROMOCIÓN - DESCUENTO
-    @OneToMany(type => DescuentoEntity, descuento => descuento.usuarios)
+    @OneToMany(type => DescuentoEntity, descuento => descuento.promocion)
     descuento: DescuentoEntity[];
 }

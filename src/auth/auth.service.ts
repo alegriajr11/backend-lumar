@@ -46,21 +46,17 @@ export class AuthService {
         try {
             const { usu_nombreUsuario } = dto;
             const direccionIp = '192.168.19.1';
-
             const usuario = await this.authRepository.findOne({
                 where: [{ usu_nombreUsuario: usu_nombreUsuario }, { usu_email: usu_nombreUsuario }],
             });
-
             if (!usuario) {
                 throw new UnauthorizedException(new MessageDto('El usuario no existe'));
             }
-
             const passordOK = await compare(dto.usu_password, usuario.usu_password);
-
             if (!passordOK) {
                 throw new UnauthorizedException(new MessageDto('Contraseña Incorrecta'));
             }
-
+            
             const payload: PayloadInterface = {
                 usu_id: usuario.usu_id,
                 usu_nombre: usuario.usu_nombre,
@@ -72,7 +68,6 @@ export class AuthService {
             };
 
             const token = await this.jwtService.sign(payload, { expiresIn: '1h' }); // El token expirará en 1 hora
-
 
             if (payload.usu_estado == 'false') {
                 throw new UnauthorizedException(new MessageDto('Acceso Denegado Comunicarse con el Administrador'));

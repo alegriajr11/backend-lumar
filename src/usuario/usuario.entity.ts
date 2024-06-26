@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { RolEntity } from "src/rol/rol.entity";
 import { SeguimientoPedidoEntity } from "src/seguimiento_pedido/seguimiento_pedido.entity";
 import { BeforeInsert, Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm";
@@ -46,14 +47,18 @@ export class UsuarioEntity {
     })
     roles: RolEntity[];
 
+
+    //Almacenar el hash de la contraseña creada
+    @BeforeInsert()
+    async hashPassword() {
+        if (!this.usu_password) return;
+        this.usu_password = await hash(this.usu_password, 10)
+    }
+    
+
     // Relacion Uno a Muchos USUARIO - SEGUIMIENTO_PEDIDO
     @OneToMany(type => SeguimientoPedidoEntity, seguimiento_pedido => seguimiento_pedido.usuario)
     seguimiento_pedido: SeguimientoPedidoEntity[];
 
-    // @BeforeInsert()
-    // async hashPassword() {
-    //     if (!this.usu_password) return;
-    //     this.usu_password = await hash(this.usu_password, 10)
-    // }
 
 }

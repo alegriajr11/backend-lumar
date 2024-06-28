@@ -15,7 +15,6 @@ import { RolNombre } from 'src/rol/rol.enum';
 export class UsuarioService {
 
     constructor(
-
         @InjectRepository(RolEntity)
         private readonly rolRepository: RolRepository,
         @InjectRepository(UsuarioEntity)

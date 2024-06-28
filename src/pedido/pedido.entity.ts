@@ -14,7 +14,7 @@ export class PedidoEntity {
     @Column({ type: 'date', nullable: false })
     ped_fecha: string;
 
-    @Column({ type: 'integer', nullable: false })
+    @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
     ped_precio_total: number;
 
     // Relacion UNO a UNO PEDIDO - SEGUIMIENTO_PEDIDO

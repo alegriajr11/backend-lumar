@@ -7,8 +7,11 @@ export class DescuentoEntity {
     @PrimaryGeneratedColumn('increment')
     desc_id: number;
 
-    @Column({type: 'varchar', length: 255, nullable: true})
-    desc_descripcion: string;
+    @Column({type: 'varchar', length: 100, nullable: true})
+    desc_titulo: string;
+
+    @Column({type: 'varchar', length: 10, nullable: true})
+    desc_cupon: string;
 
     @Column({ type: 'decimal', precision: 5, scale: 2 })
     desc_porcentaje: number;

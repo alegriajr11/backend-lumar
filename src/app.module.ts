@@ -26,6 +26,7 @@ import { DetalleCarritoModule } from './detalle_carrito/detalle_carrito.module';
 import { ImagenProductoModule } from './imagen_producto/imagen_producto.module';
 import { UbicacionModule } from './ubicacion/ubicacion.module';
 import { AuthModule } from './auth/auth.module';
+import { PagosModule } from './pagos/pagos.module';
 
 
 @Module({
@@ -71,6 +72,7 @@ import { AuthModule } from './auth/auth.module';
     ImagenProductoModule,
     UbicacionModule,
     AuthModule,
+    PagosModule,
 
   ],
   controllers: [AppController],

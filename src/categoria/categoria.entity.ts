@@ -1,3 +1,4 @@
+import { PromocionEntity } from "src/promocion/promocion.entity";
 import { SeccionEntity } from "src/seccion/seccion.entity";
 import { SubcategoriaEntity } from "src/subcategoria/subcategoria.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -18,4 +19,8 @@ export class CategoriaEntity {
     // Relacion Muchos a Uno CATEGORIA - SECCION 
     @ManyToOne(type => SeccionEntity, seccion => seccion.categoria)
     seccion: SeccionEntity;
+
+    // Relacion Muchos a Uno CATEGORIA - PROMOCION 
+    @ManyToOne(type => PromocionEntity, promocion => promocion.categoria)
+    promocion: PromocionEntity;
 }

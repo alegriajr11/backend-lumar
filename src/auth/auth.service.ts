@@ -45,7 +45,6 @@ export class AuthService {
     async login(dto: LoginUsuarioDto): Promise<any> {
         try {
             const { usu_nombreUsuario } = dto;
-            const direccionIp = '192.168.19.1';
             const usuario = await this.authRepository.findOne({
                 where: [{ usu_nombreUsuario: usu_nombreUsuario }, { usu_email: usu_nombreUsuario }],
             });
